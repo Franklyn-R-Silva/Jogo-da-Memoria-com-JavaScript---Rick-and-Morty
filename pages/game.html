@@ -22,9 +22,18 @@
       <header>
         <span class="player"></span>
         <span>⏱️ Tempo: <span class="timer">0</span>s</span>
-        <button class="restart-btn" onclick="restartGame()">
-          🔄 Reiniciar
-        </button>
+        <div class="header-buttons">
+          <select
+            class="difficulty-select"
+            title="Selecionar dificuldade"
+            onchange="changeDifficulty(this.value)"
+          >
+            <option value="easy">Fácil</option>
+            <option value="medium">Médio</option>
+            <option value="hard">Difícil</option>
+          </select>
+          <button class="restart-btn" onclick="restartGame()">🔄</button>
+        </div>
       </header>
       <div class="grid"></div>
     </main>

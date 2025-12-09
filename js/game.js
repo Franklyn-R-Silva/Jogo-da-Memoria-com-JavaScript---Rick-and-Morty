@@ -141,9 +141,23 @@ const restartGame = () => {
   loadGame();
 };
 
+const changeDifficulty = (difficulty) => {
+  currentDifficulty = difficulty;
+  localStorage.setItem("difficulty", difficulty);
+  restartGame();
+};
+
+const updateDifficultySelect = () => {
+  const select = document.querySelector(".difficulty-select");
+  if (select) {
+    select.value = currentDifficulty;
+  }
+};
+
 window.onload = () => {
   spanPlayer.innerHTML = localStorage.getItem("player");
   currentDifficulty = localStorage.getItem("difficulty") || "easy";
+  updateDifficultySelect();
   startTimer();
   loadGame();
 };

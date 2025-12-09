@@ -28,15 +28,37 @@ header {
 .restart-btn {
   background-color: #97ce4c;
   color: #333;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 0.7em;
+  font-size: 0.8em;
   transition: background-color 0.3s ease;
 }
 
 .restart-btn:hover {
   background-color: #7ab832;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.difficulty-select {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 2px solid #39813a;
+  background-color: #fff;
+  color: #333;
+  font-size: 0.7em;
+  font-family: "Press Start 2P", cursive;
+  cursor: pointer;
+  outline: none;
+}
+
+.difficulty-select:hover {
+  border-color: #97ce4c;
 }
 
 .grid {
