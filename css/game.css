@@ -14,13 +14,29 @@ header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
     background-color: rgba(255, 255, 255, 0.8);
     font-size: 1.2em;
     width: 100%;
     max-width: 800px;
-    padding: 30px;
+    padding: 20px 30px;
     margin: 0 0 30px;
     border-radius: 5px;
+}
+
+.restart-btn {
+    background-color: #97ce4c;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.7em;
+    transition: background-color 0.3s ease;
+}
+
+.restart-btn:hover {
+    background-color: #7ab832;
 }
 
 .grid {

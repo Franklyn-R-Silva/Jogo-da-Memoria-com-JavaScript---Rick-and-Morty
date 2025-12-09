@@ -62,3 +62,43 @@
   color: #aaa;
   cursor: auto;
 }
+
+/* Seletor de Dificuldade */
+.difficulty-selector {
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+}
+
+.difficulty-selector label {
+  color: #333;
+  font-size: 0.8em;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.difficulty-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.difficulty-btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #eee;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.7em;
+  transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+  background-color: #ddd;
+}
+
+.difficulty-btn.active {
+  background-color: #97ce4c;
+  color: #333;
+}

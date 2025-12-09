@@ -15,6 +15,16 @@ const characters = [
     'scroopy',
 ];
 
+// Configurações de dificuldade
+const difficultySettings = {
+    easy: { pairs: 6, columns: 4 },
+    medium: { pairs: 8, columns: 4 },
+    hard: { pairs: 10, columns: 5 }
+};
+
+let currentDifficulty = localStorage.getItem('difficulty') || 'easy';
+let gameLoop = null;
+
 const createElement = (tag, className) => {
     const element = document.createElement(tag);
     element.className = className;
@@ -26,10 +36,11 @@ let secondCard = '';
 
 const checkEndGame = () => {
     const disabledCards = document.querySelectorAll('.disabled-card');
+    const totalCards = difficultySettings[currentDifficulty].pairs * 2;
 
-    if (disabledCards.length === 20) {
-        clearInterval(this.loop);
-        alert(`Parabéns, ${spanPlayer.innerHTML} você conseguiu! Seu tempo foi: ${timer.innerHTML}`);
+    if (disabledCards.length === totalCards) {
+        clearInterval(gameLoop);
+        alert(`Parabéns, ${spanPlayer.innerHTML}! Você conseguiu em ${timer.innerHTML} segundos!`);
     }
 }
 
@@ -100,9 +111,14 @@ const createCard = (character) => {
 }
 
 const loadGame = () => {
-    const duplicateCharacters = [...characters, ...characters];
+    const settings = difficultySettings[currentDifficulty];
+    const gameCharacters = characters.slice(0, settings.pairs);
+    const duplicateCharacters = [...gameCharacters, ...gameCharacters];
 
     const shuffledArray = duplicateCharacters.sort(() => Math.random() - 0.5);
+
+    // Ajusta o grid baseado na dificuldade
+    grid.style.gridTemplateColumns = `repeat(${settings.columns}, 1fr)`;
 
     shuffledArray.forEach((character) => {
         const card = createCard(character);
@@ -111,15 +127,33 @@ const loadGame = () => {
 }
 
 const startTimer = () => {
-    this.loop = setInterval(() => {
+    gameLoop = setInterval(() => {
         const currentTime = +timer.innerHTML;
         timer.innerHTML = currentTime + 1;
     }, 1000);
 }
 
+const restartGame = () => {
+    // Para o timer
+    clearInterval(gameLoop);
+    
+    // Limpa o grid
+    grid.innerHTML = '';
+    
+    // Reseta variáveis
+    firstCard = '';
+    secondCard = '';
+    timer.innerHTML = '0';
+    
+    // Reinicia o jogo
+    startTimer();
+    loadGame();
+}
+
 
 window.onload = () => {
     spanPlayer.innerHTML = localStorage.getItem("player");
+    currentDifficulty = localStorage.getItem('difficulty') || 'easy';
     startTimer();
     loadGame();
 }
