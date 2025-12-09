@@ -61,6 +61,7 @@ Encontre todos os pares de personagens no menor tempo possível!
 ## 💻 Como Executar
 
 1. Clone o repositório
+
 ```bash
 git clone https://github.com/Franklyn-R-Silva/Jogo-da-Memoria-com-JavaScript---Rick-and-Morty.git
 ```
